@@ -287,6 +287,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1077346747}
+  - component: {fileID: 1077346748}
+  - component: {fileID: 1077346749}
+  - component: {fileID: 1077346750}
+  - component: {fileID: 1077346751}
   m_Layer: 0
   m_Name: Map Loader
   m_TagString: Untagged
@@ -303,61 +307,55 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1675133780}
-  - {fileID: 1853852486}
-  - {fileID: 1118487418}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1118487417
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1118487418}
-  - component: {fileID: 1118487419}
-  - component: {fileID: 1118487420}
-  m_Layer: 0
-  m_Name: Info Loader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1118487418
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1118487417}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1077346747}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1118487419
+--- !u!114 &1077346748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1118487417}
+  m_GameObject: {fileID: 1077346746}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe408774a129c44485ad429d01bbf89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonFile: gameplayInfo
---- !u!114 &1118487420
+  jsonFile: level1
+--- !u!114 &1077346749
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1118487417}
+  m_GameObject: {fileID: 1077346746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796eab5e78493bd45ae76a9d7e1088dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorUnitPrefab: {fileID: 1758644679357936, guid: 9c58ebd1ea008f74695b751d3bb3db75,
+    type: 2}
+  targetContainer: {fileID: 430510649}
+--- !u!114 &1077346750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1077346746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e488ecddfb5140d43968491a51e1e3fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxPrefab: {fileID: 1196985366245448, guid: c2fade771fc292748b887b6a53844581, type: 2}
+  targetContainer: {fileID: 434837249}
+--- !u!114 &1077346751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1077346746}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b978c0cf1bbb76c498beca7d59275674, type: 3}
@@ -469,62 +467,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
---- !u!1 &1675133777
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1675133780}
-  - component: {fileID: 1675133779}
-  - component: {fileID: 1675133778}
-  m_Layer: 0
-  m_Name: Floor Loader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1675133778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1675133777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 796eab5e78493bd45ae76a9d7e1088dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floorUnitPrefab: {fileID: 1758644679357936, guid: 9c58ebd1ea008f74695b751d3bb3db75,
-    type: 2}
-  targetContainer: {fileID: 430510649}
---- !u!114 &1675133779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1675133777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe408774a129c44485ad429d01bbf89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jsonFile: floor
---- !u!4 &1675133780
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1675133777}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1077346747}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1754932724
 Prefab:
   m_ObjectHideFlags: 0
@@ -637,58 +579,3 @@ Transform:
   m_PrefabParentObject: {fileID: 4649539469616736, guid: 5c6576c925f136c48b2bf0566aa41fab,
     type: 2}
   m_PrefabInternal: {fileID: 1754932724}
---- !u!1 &1853852485
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1853852486}
-  - component: {fileID: 1853852487}
-  - component: {fileID: 1853852488}
-  m_Layer: 0
-  m_Name: Box Loader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1853852486
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1853852485}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1077346747}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1853852487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1853852485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe408774a129c44485ad429d01bbf89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jsonFile: boxes
---- !u!114 &1853852488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1853852485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e488ecddfb5140d43968491a51e1e3fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boxPrefab: {fileID: 1196985366245448, guid: c2fade771fc292748b887b6a53844581, type: 2}
-  targetContainer: {fileID: 434837249}

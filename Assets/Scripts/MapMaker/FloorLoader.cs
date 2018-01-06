@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloorLoading : MonoBehaviour {
+public class FloorLoader : MonoBehaviour {
 
     public GameObject floorUnitPrefab;
     public Transform targetContainer;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxLoading : MonoBehaviour {
+public class BoxLoader : MonoBehaviour {
 
     public GameObject boxPrefab;
     public Transform targetContainer;
