@@ -34,23 +34,26 @@ public class Box : MonoBehaviour {
             if (inCluster)
                 BoxCluster.instance.AddBox(otherBox);
 
-            if (type == BoxType.DEFAULT) {
-                animator.SetTrigger(triggers[otherBox.type]);
-                type = otherBox.type;
-            }
+            if (type == BoxType.DEFAULT)
+                UpdateType(otherBox.type);
             else if (type == BoxType.GREEN && otherBox.type == BoxType.RED)
                 Destroy(gameObject);
             else if (type == BoxType.BLUE && otherBox.type == BoxType.GREEN)
                 Destroy(gameObject);
             else if (type == BoxType.RED && otherBox.type == BoxType.BLUE)
                 Destroy(gameObject);
-            else
-                otherBox.type = type;
+            else if (type != otherBox.type)
+                otherBox.UpdateType(type);
         }
     }
 
     void OnDestroy() {
         if (BoxCluster.instance)
             BoxCluster.instance.RemoveBox(this);
+    }
+
+    public void UpdateType(BoxType newType) {
+        animator.SetTrigger(triggers[newType]);
+        type = newType;
     }
 }
