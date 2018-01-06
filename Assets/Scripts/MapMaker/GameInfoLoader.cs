@@ -32,8 +32,10 @@ public class GameInfoLoader : MonoBehaviour {
 
     void InstantiatePlayer(int i, int j) {
         var player = Instantiate(playerPrefab);
-        player.transform.position = new Vector2(Mathf.Lerp(offset[0], offset[0]+(float)width, (float)j/(float)width),
-                                             Mathf.Lerp(offset[1], offset[1]-(float)height, (float)i/(float)height));
-        Camera.main.GetComponent<CameraFollow>().MoveTo(player.transform.position);
+        var cluster = player.GetComponent<BoxCluster>();
+        cluster.startingPos =
+            new Vector2(Mathf.Lerp(offset[0], offset[0]+(float)width, (float)j/(float)width),
+                        Mathf.Lerp(offset[1], offset[1]-(float)height, (float)i/(float)height));
+        Camera.main.GetComponent<CameraFollow>().MoveTo(cluster.startingPos);
     }
 }

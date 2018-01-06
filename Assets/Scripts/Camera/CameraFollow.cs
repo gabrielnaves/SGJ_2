@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
-    public GameObject player;
+    public BoxCluster player;
 
     void Update() {
         if (!player)
@@ -14,11 +14,13 @@ public class CameraFollow : MonoBehaviour {
     }
 
     void LookForPlayer() {
-        player = GameObject.FindGameObjectWithTag("Player");
+        var playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj)
+            player = playerObj.GetComponent<BoxCluster>();
     }
 
     void FollowPlayer() {
-        MoveTo(player.transform.position);
+        MoveTo(player.followedPosition());
     }
 
     public void MoveTo(Vector3 position) {
