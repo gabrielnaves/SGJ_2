@@ -456,6 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ad66d63ca2401449b7fbaa88cf7f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &1675133777
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,8 +702,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e488ecddfb5140d43968491a51e1e3fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxPrefabs:
-  - {fileID: 1004599441549636, guid: 144a5297449dbb04b86c80b5c3caebb0, type: 2}
-  - {fileID: 1196985366245448, guid: c2fade771fc292748b887b6a53844581, type: 2}
-  - {fileID: 1409788919904588, guid: 8aa31aa1d2ea89f48a9f3728343564e8, type: 2}
+  boxPrefab: {fileID: 1196985366245448, guid: c2fade771fc292748b887b6a53844581, type: 2}
   targetContainer: {fileID: 434837249}

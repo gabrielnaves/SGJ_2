@@ -34,5 +34,6 @@ public class GameInfoLoader : MonoBehaviour {
         var player = Instantiate(playerPrefab);
         player.transform.position = new Vector2(Mathf.Lerp(offset[0], offset[0]+(float)width, (float)j/(float)width),
                                              Mathf.Lerp(offset[1], offset[1]-(float)height, (float)i/(float)height));
+        Camera.main.GetComponent<CameraFollow>().MoveTo(player.transform.position);
     }
 }

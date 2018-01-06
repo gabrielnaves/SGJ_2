@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
-    GameObject player;
+    public GameObject player;
 
     void Update() {
         if (!player)
@@ -18,7 +18,10 @@ public class CameraFollow : MonoBehaviour {
     }
 
     void FollowPlayer() {
-        var position = player.transform.position;
+        MoveTo(player.transform.position);
+    }
+
+    public void MoveTo(Vector3 position) {
         position.z = -10;
         transform.position = position;
     }

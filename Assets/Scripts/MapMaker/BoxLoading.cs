@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoxLoading : MonoBehaviour {
 
-    public GameObject[] boxPrefabs;
+    public GameObject boxPrefab;
     public Transform targetContainer;
 
     MapLoader mapLoader;
@@ -25,17 +25,18 @@ public class BoxLoading : MonoBehaviour {
         for (int i = 0; i < height; ++i) {
             for (int j = 0; j < width; ++j) {
                 index = i * width + j;
-                if (mapLoader.data.data[index] > 1)
-                    InstantiateBox(i, j, boxPrefabs[mapLoader.data.data[index] - 2]);
+                if (mapLoader.data.data[index] >= 2 && mapLoader.data.data[index] <= 4)
+                    InstantiateBox(i, j, (BoxType)(mapLoader.data.data[index] - 2));
             }
         }
     }
 
-    void InstantiateBox(int i, int j, GameObject prefab) {
-        var box = Instantiate(prefab);
+    void InstantiateBox(int i, int j, BoxType type) {
+        var box = Instantiate(boxPrefab);
         box.transform.parent = targetContainer;
         box.transform.position = new Vector2(Mathf.Lerp(offset[0], offset[0]+(float)width, (float)j/(float)width),
                                              Mathf.Lerp(offset[1], offset[1]-(float)height, (float)i/(float)height));
         box.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        box.GetComponent<Box>().type = type;
     }
 }
