@@ -25,7 +25,7 @@ public class Box : MonoBehaviour {
 
     void Start() {
         animator = GetComponent<Animator>();
-        animator.SetTrigger(triggers[type]);
+        UpdateType(type);
     }
 
     void OnCollisionEnter2D(Collision2D other) {
@@ -35,16 +35,22 @@ public class Box : MonoBehaviour {
                 if (otherBox.type == BoxType.BLUE)
                     BoxCluster.instance.AddBox(otherBox);
             }
+            else if (type == BoxType.RED && otherBox.type == BoxType.BLUE) {
+                Destroy(otherBox.gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 
     void OnDestroy() {
-        if (BoxCluster.instance && type == BoxType.BLUE)
+        if (inCluster)
             BoxCluster.instance.RemoveBox(this);
     }
 
     public void UpdateType(BoxType newType) {
         animator.SetTrigger(triggers[newType]);
+        transform.GetChild((int)type).gameObject.SetActive(false);
+        transform.GetChild((int)newType).gameObject.SetActive(true);
         type = newType;
     }
 }
