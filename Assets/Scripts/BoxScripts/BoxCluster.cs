@@ -27,6 +27,8 @@ public class BoxCluster : MonoBehaviour {
     }
 
     public Vector3 followedPosition() {
+        if (connectedBoxes.Count == 0)
+            return startingPos;
         return connectedBoxes[0].transform.position;
     }
 
@@ -42,7 +44,7 @@ public class BoxCluster : MonoBehaviour {
     public void RemoveBox(Box box) {
         if (connectedBoxes.Contains(box)) {
             connectedBoxes.Remove(box);
-            box.transform.parent = null;
+            box.transform.parent = BoxContainer.instance ? BoxContainer.instance.transform : null;
             box.inCluster = false;
         }
     }

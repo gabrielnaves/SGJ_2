@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
-    void Update() {
+    public float speed = 1f;
+
+    void FixedUpdate() {
         if (BoxCluster.instance)
             FollowPlayer();
     }
 
     void FollowPlayer() {
-        MoveTo(BoxCluster.instance.followedPosition());
+        var target = BoxCluster.instance.followedPosition();
+        Vector2 position = transform.position;
+        position = Vector2.Lerp(transform.position, target, speed);
+        transform.position = new Vector3(position.x, position.y, -10);
     }
 
     public void MoveTo(Vector3 position) {
