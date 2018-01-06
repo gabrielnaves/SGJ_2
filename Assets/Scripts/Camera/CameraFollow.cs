@@ -4,23 +4,13 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
-    public BoxCluster player;
-
     void Update() {
-        if (!player)
-            LookForPlayer();
-        else
+        if (BoxCluster.instance)
             FollowPlayer();
     }
 
-    void LookForPlayer() {
-        var playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj)
-            player = playerObj.GetComponent<BoxCluster>();
-    }
-
     void FollowPlayer() {
-        MoveTo(player.followedPosition());
+        MoveTo(BoxCluster.instance.followedPosition());
     }
 
     public void MoveTo(Vector3 position) {
