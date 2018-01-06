@@ -62,4 +62,11 @@ public class BoxCluster : MonoBehaviour {
             box.inCluster = false;
         }
     }
+
+    public Vector2 CenterPosition() {
+        Vector2 result = Vector2.zero;
+        foreach(var box in connectedBoxes)
+            result += (Vector2)box.transform.position;
+        return result / (float)connectedBoxes.Count;
+    }
 }

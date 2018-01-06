@@ -13,10 +13,27 @@ public class ClusterMovement : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        UpdateHorizontalMovement();
+        UpdateJoiningMovement();
+    }
+
+    void UpdateHorizontalMovement() {
         Vector2 inputForce = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         inputForce.x *= speed;
         inputForce.y *= speed / 2f;
         foreach (var box in cluster.connectedBoxes)
             box.GetComponent<Rigidbody2D>().AddForce(inputForce);
+    }
+
+    void UpdateJoiningMovement() {
+        if (Input.GetKey(KeyCode.Space)) {
+            var center = cluster.CenterPosition();
+            Vector2 force = Vector2.zero;
+            foreach(var box in cluster.connectedBoxes) {
+                force = (center - (Vector2)box.transform.position).normalized;
+                force.x *= speed * 5;
+                box.GetComponent<Rigidbody2D>().AddForce(force);
+            }
+        }
     }
 }
