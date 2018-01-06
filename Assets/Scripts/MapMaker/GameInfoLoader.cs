@@ -24,7 +24,7 @@ public class GameInfoLoader : MonoBehaviour {
         for (int i = 0; i < height; ++i) {
             for (int j = 0; j < width; ++j) {
                 index = i * width + j;
-                if (mapLoader.data.data[index] == 6)
+                if (mapLoader.data.data[index] == 5)
                     InstantiatePlayer(i, j);
             }
         }
