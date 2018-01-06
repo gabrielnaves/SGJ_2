@@ -29,7 +29,21 @@ public class BoxCluster : MonoBehaviour {
     public Vector3 followedPosition() {
         if (connectedBoxes.Count == 0)
             return startingPos;
-        return connectedBoxes[0].transform.position;
+        Vector2 result = Vector2.zero;
+        float minHeight = 999999;
+        int count = 1;
+        foreach (var box in connectedBoxes) {
+            if (Mathf.Abs(box.transform.position.y - minHeight) < 0.2f) {
+                result += (Vector2)box.transform.position;
+                count++;
+            }
+            else if (box.transform.position.y < minHeight) {
+                minHeight = box.transform.position.y;
+                result = box.transform.position;
+                count = 1;
+            }
+        }
+        return result / count;
     }
 
     public void AddBox(Box box) {
