@@ -6,7 +6,8 @@ public enum BoxType {
     GREEN,
     BLUE,
     RED,
-    DEFAULT
+    DEFAULT,
+    WHITE
 }
 
 public class Box : MonoBehaviour {
@@ -20,11 +21,15 @@ public class Box : MonoBehaviour {
         { BoxType.DEFAULT, "toDefault" },
         { BoxType.RED, "toRed" },
         { BoxType.GREEN, "toGreen" },
-        { BoxType.BLUE, "toBlue" }
+        { BoxType.BLUE, "toBlue" },
+        { BoxType.WHITE, "toWhite" }
     };
 
-    void Start() {
+    void Awake() {
         animator = GetComponent<Animator>();
+    }
+
+    void Start() {
         UpdateType(type);
     }
 
@@ -32,8 +37,10 @@ public class Box : MonoBehaviour {
         var otherBox = other.gameObject.GetComponent<Box>();
         if (otherBox) {
             if (inCluster) {
-                if (otherBox.type == BoxType.BLUE)
+                if (otherBox.type == BoxType.BLUE || otherBox.type == BoxType.WHITE)
                     BoxCluster.instance.AddBox(otherBox);
+                if (otherBox.type == BoxType.WHITE)
+                    otherBox.UpdateType(BoxType.BLUE);
             }
             if (type == BoxType.RED && otherBox.type == BoxType.BLUE) {
                 Destroy(otherBox.gameObject);
@@ -41,7 +48,7 @@ public class Box : MonoBehaviour {
             }
             if (type == BoxType.BLUE && otherBox.type == BoxType.GREEN) {
                 if (inCluster)
-                    BoxCluster.instance.RemoveBox(this);
+                    BoxCluster.instance.RemoveBox(this, updateType:false);
                 UpdateType(otherBox.type);
                 GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             }
@@ -50,7 +57,7 @@ public class Box : MonoBehaviour {
 
     void OnDestroy() {
         if (inCluster)
-            BoxCluster.instance.RemoveBox(this);
+            BoxCluster.instance.RemoveBox(this, updateType:false);
         if (type == BoxType.BLUE)
             GameManager.instance.data.blueAmountOnLevel--;
     }

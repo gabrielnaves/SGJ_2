@@ -52,15 +52,18 @@ public class BoxCluster : MonoBehaviour {
             box.transform.parent = transform;
             box.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             box.inCluster = true;
+            box.UpdateType(BoxType.BLUE);
         }
     }
 
-    public void RemoveBox(Box box) {
+    public void RemoveBox(Box box, bool updateType = true) {
         if (connectedBoxes.Contains(box)) {
             connectedBoxes.Remove(box);
             if (BoxesTouched.instance)
                 BoxesTouched.instance.Add(box);
             box.inCluster = false;
+            if (updateType)
+                box.UpdateType(BoxType.WHITE);
         }
     }
 
