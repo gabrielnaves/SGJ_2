@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoxLoader : MonoBehaviour {
 
     public GameObject boxPrefab;
+    public GameObject blueBox;
     public Transform targetContainer;
 
     MapLoader mapLoader;
@@ -25,8 +26,12 @@ public class BoxLoader : MonoBehaviour {
         for (int i = 0; i < height; ++i) {
             for (int j = 0; j < width; ++j) {
                 index = i * width + j;
-                if (mapLoader.data.data[index] >= 2 && mapLoader.data.data[index] <= 4)
+                if (mapLoader.data.data[index] == 3)
+                    InstantiateBlueBox(i, j);
+                else if (mapLoader.data.data[index] >= 2 && mapLoader.data.data[index] <= 4)
                     InstantiateBox(i, j, (BoxType)(mapLoader.data.data[index] - 2));
+                else if (mapLoader.data.data[index] == 7)
+                    InstantiateBox(i, j, BoxType.WHITE);
             }
         }
     }
@@ -40,9 +45,14 @@ public class BoxLoader : MonoBehaviour {
         box.GetComponent<Box>().type = type;
         if (type == BoxType.RED)
             RedBoxSpread.instance.AddToList(i, j, box);
-        else if (type == BoxType.BLUE) {
+        else if (type == BoxType.WHITE)
             GameManager.instance.data.blueAmountOnLevel++;
-            box.GetComponent<Box>().type = BoxType.WHITE;
-        }
+    }
+
+    void InstantiateBlueBox(int i, int j) {
+        var box = Instantiate(blueBox);
+        box.transform.parent = targetContainer;
+        box.transform.position = new Vector2(Mathf.Lerp(offset[0], offset[0]+(float)width, (float)j/(float)width),
+                                             Mathf.Lerp(offset[1], offset[1]-(float)height, (float)i/(float)height));
     }
 }

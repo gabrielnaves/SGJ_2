@@ -43,7 +43,7 @@ public class Box : MonoBehaviour {
                 if (otherBox.type == BoxType.WHITE)
                     otherBox.UpdateType(BoxType.BLUE);
             }
-            if (type == BoxType.RED && otherBox.type == BoxType.BLUE) {
+            if (type == BoxType.BLUE && otherBox.type == BoxType.RED) {
                 Destroy(otherBox.gameObject);
                 Destroy(gameObject);
             }
@@ -73,6 +73,8 @@ public class Box : MonoBehaviour {
 
     bool requestedExit;
     void LateUpdate() {
+        if (type == BoxType.RED || type == BoxType.GREEN)
+            enabled = false;
         if (inCluster && !ignorePositioning) {
             float distance = (transform.position - Camera.main.transform.position).magnitude;
             if (distance > 15f && !requestedExit) {

@@ -19,7 +19,7 @@ public class RedBoxSpread : MonoBehaviour {
 
     void Awake() {
         instance = this;
-        InvokeRepeating("SpreadFire", delay, delay);
+        // InvokeRepeating("SpreadFire", delay, delay);
     }
 
     void SpreadFire() {

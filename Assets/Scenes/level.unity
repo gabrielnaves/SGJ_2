@@ -153,7 +153,7 @@ MonoBehaviour:
   boxPrefab: {fileID: 1196985366245448, guid: c2fade771fc292748b887b6a53844581, type: 2}
   targetContainer: {fileID: 434837249}
   mapLoader: {fileID: 1077346748}
-  delay: 10
+  delay: 15
 --- !u!1 &430510648
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,6 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxPrefab: {fileID: 1196985366245448, guid: c2fade771fc292748b887b6a53844581, type: 2}
+  blueBox: {fileID: 1196985366245448, guid: 3482d7a5f01cf68449ad964f596d9043, type: 2}
   targetContainer: {fileID: 434837249}
 --- !u!114 &1077346751
 MonoBehaviour:
@@ -707,6 +708,7 @@ MonoBehaviour:
     blueAmountOnLevel: 0
     turnedBoxes: 0
     touchedBoxes: 0
+    amountOnCluster: 0
 --- !u!114 &1911291421
 MonoBehaviour:
   m_ObjectHideFlags: 0
