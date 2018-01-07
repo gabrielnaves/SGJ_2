@@ -51,6 +51,8 @@ public class Box : MonoBehaviour {
     void OnDestroy() {
         if (inCluster)
             BoxCluster.instance.RemoveBox(this);
+        if (type == BoxType.BLUE)
+            GameManager.instance.data.blueAmountOnLevel--;
     }
 
     public void UpdateType(BoxType newType) {

@@ -16,6 +16,8 @@ public class BoxesTurned : MonoBehaviour {
         if (!boxList.Contains(box)) {
             boxList.Add(box);
             box.transform.parent = transform;
+            GameManager.instance.data.turnedBoxes++;
+            GameManager.instance.data.blueAmountOnLevel--;
         }
     }
 }

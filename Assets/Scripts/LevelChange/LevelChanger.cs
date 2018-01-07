@@ -17,6 +17,7 @@ public class LevelChanger : MonoBehaviour {
     }
 
     public void RestartCurrentLevel() {
+        Time.timeScale = 1;
         SceneManager.LoadScene(levelScene);
     }
 
@@ -34,6 +35,7 @@ public class LevelChanger : MonoBehaviour {
     }
 
     public void LoadMenuScene() {
+        Time.timeScale = 1;
         SceneManager.LoadScene(menuScene);
     }
 }

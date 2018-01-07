@@ -82,7 +82,7 @@ public class ScreenFader : MonoBehaviour {
 	private void Fade(float alphaPercentage, float alphaLimit, ref bool fadeFlag) {
 		alphaPercentage = Mathf.Clamp01(alphaPercentage);
 		overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, alphaPercentage);
-		elapsedTime += Time.deltaTime;
+		elapsedTime += Time.unscaledDeltaTime;
 		if (overlay.color.a == alphaLimit) {
 			fadeFlag = false;
 			elapsedTime = 0;

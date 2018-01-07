@@ -16,6 +16,7 @@ public class BoxesTouched : MonoBehaviour {
         if (!boxList.Contains(box)) {
             boxList.Add(box);
             box.transform.parent = transform;
+            GameManager.instance.data.touchedBoxes++;
         }
     }
 
@@ -23,21 +24,26 @@ public class BoxesTouched : MonoBehaviour {
         if (boxList.Count == 0)
             return null;
         var first = boxList[0];
-        boxList.RemoveAt(0);
+        RemoveBox(0);
         return first;
     }
 
     void LateUpdate() {
         for (int i = 0; i < boxList.Count; ++i) {
             if (boxList[i] == null)
-                boxList.RemoveAt(i--);
+                RemoveBox(i--);
             else if (boxList[i].type == BoxType.GREEN) {
                 BoxesTurned.instance.Add(boxList[i]);
-                boxList.RemoveAt(i--);
+                RemoveBox(i--);
             }
             else if (boxList[i].inCluster) {
-                boxList.RemoveAt(i--);
+                RemoveBox(i--);
             }
         }
+    }
+
+    void RemoveBox(int index) {
+        boxList.RemoveAt(index);
+        GameManager.instance.data.touchedBoxes--;
     }
 }

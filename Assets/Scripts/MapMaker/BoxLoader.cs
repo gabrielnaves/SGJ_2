@@ -40,5 +40,7 @@ public class BoxLoader : MonoBehaviour {
         box.GetComponent<Box>().type = type;
         if (type == BoxType.RED)
             RedBoxSpread.instance.AddToList(i, j, box);
+        else if (type == BoxType.BLUE)
+            GameManager.instance.data.blueAmountOnLevel++;
     }
 }

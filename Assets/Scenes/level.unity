@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxPrefab: {fileID: 1196985366245448, guid: c2fade771fc292748b887b6a53844581, type: 2}
-  targetContainer: {fileID: 0}
+  targetContainer: {fileID: 434837249}
   mapLoader: {fileID: 1077346748}
   delay: 10
 --- !u!1 &430510648
@@ -210,6 +210,54 @@ Transform:
   m_Father: {fileID: 654451406}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &649613544
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 487962, guid: 6294d8367d1422742a00f294fe5f108a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 487962, guid: 6294d8367d1422742a00f294fe5f108a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 487962, guid: 6294d8367d1422742a00f294fe5f108a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 487962, guid: 6294d8367d1422742a00f294fe5f108a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 487962, guid: 6294d8367d1422742a00f294fe5f108a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 487962, guid: 6294d8367d1422742a00f294fe5f108a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 487962, guid: 6294d8367d1422742a00f294fe5f108a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 487962, guid: 6294d8367d1422742a00f294fe5f108a, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 6294d8367d1422742a00f294fe5f108a, type: 2}
+  m_IsPrefabParent: 0
+--- !u!114 &649613545 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11447524, guid: 6294d8367d1422742a00f294fe5f108a,
+    type: 2}
+  m_PrefabInternal: {fileID: 649613544}
+  m_Script: {fileID: 11500000, guid: f20c30ef429992b4eb2d54bc50e2c006, type: 3}
 --- !u!1 &654451405
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,6 +661,67 @@ Transform:
   m_PrefabParentObject: {fileID: 4649539469616736, guid: 5c6576c925f136c48b2bf0566aa41fab,
     type: 2}
   m_PrefabInternal: {fileID: 1754932724}
+--- !u!1 &1911291418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1911291419}
+  - component: {fileID: 1911291420}
+  - component: {fileID: 1911291421}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1911291419
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1911291418}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1911291420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1911291418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368285a5b4ebb10448c698b1b577727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenFader: {fileID: 649613545}
+  data:
+    blueAmountOnLevel: 0
+    turnedBoxes: 0
+    touchedBoxes: 0
+--- !u!114 &1911291421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1911291418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d19cd89545ece64289ac0b206f01218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseLevelKey: level
+  menuScene: menu
+  levelScene: level
+  screenFader: {fileID: 649613545}
 --- !u!1 &1961661618
 GameObject:
   m_ObjectHideFlags: 0
