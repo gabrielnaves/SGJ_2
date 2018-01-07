@@ -38,5 +38,7 @@ public class BoxLoader : MonoBehaviour {
                                              Mathf.Lerp(offset[1], offset[1]-(float)height, (float)i/(float)height));
         box.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         box.GetComponent<Box>().type = type;
+        if (type == BoxType.RED)
+            RedBoxSpread.instance.AddToList(i, j, box);
     }
 }
