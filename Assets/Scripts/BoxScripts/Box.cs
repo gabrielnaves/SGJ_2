@@ -53,4 +53,11 @@ public class Box : MonoBehaviour {
         transform.GetChild((int)newType).gameObject.SetActive(true);
         type = newType;
     }
+
+    void LateUpdate() {
+        if (inCluster) {
+            if ((transform.position - Camera.main.transform.position).magnitude > 15f)
+                BoxCluster.instance.RemoveBox(this);
+        }
+    }
 }
