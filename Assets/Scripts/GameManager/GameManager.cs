@@ -8,6 +8,7 @@ public class GameData {
     public int blueAmountOnLevel;
     public int turnedBoxes;
     public int touchedBoxes;
+    public int amountOnCluster;
 }
 
 public class GameManager : MonoBehaviour {

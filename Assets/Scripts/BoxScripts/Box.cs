@@ -14,6 +14,7 @@ public class Box : MonoBehaviour {
 
     public BoxType type;
     public bool inCluster;
+    public bool ignorePositioning = false;
 
     Animator animator;
     Dictionary<BoxType, string> triggers = new Dictionary<BoxType, string>()
@@ -46,7 +47,8 @@ public class Box : MonoBehaviour {
                 Destroy(otherBox.gameObject);
                 Destroy(gameObject);
             }
-            if (type == BoxType.BLUE && otherBox.type == BoxType.GREEN) {
+            if ((type == BoxType.BLUE && otherBox.type == BoxType.GREEN) ||
+                 type == BoxType.WHITE && otherBox.type == BoxType.GREEN) {
                 if (inCluster)
                     BoxCluster.instance.RemoveBox(this, updateType:false);
                 UpdateType(otherBox.type);
@@ -71,7 +73,7 @@ public class Box : MonoBehaviour {
 
     bool requestedExit;
     void LateUpdate() {
-        if (inCluster) {
+        if (inCluster && !ignorePositioning) {
             float distance = (transform.position - Camera.main.transform.position).magnitude;
             if (distance > 15f && !requestedExit) {
                 requestedExit = true;
@@ -90,5 +92,9 @@ public class Box : MonoBehaviour {
 
     void ExitCluster() {
         BoxCluster.instance.RemoveBox(this);
+    }
+
+    void ResetPositioningFlag() {
+        ignorePositioning = false;
     }
 }

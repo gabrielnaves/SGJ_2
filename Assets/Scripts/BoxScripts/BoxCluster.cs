@@ -53,6 +53,7 @@ public class BoxCluster : MonoBehaviour {
             box.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             box.inCluster = true;
             box.UpdateType(BoxType.BLUE);
+            GameManager.instance.data.amountOnCluster++;
         }
     }
 
@@ -64,6 +65,7 @@ public class BoxCluster : MonoBehaviour {
             box.inCluster = false;
             if (updateType)
                 box.UpdateType(BoxType.WHITE);
+            GameManager.instance.data.amountOnCluster--;
         }
     }
 

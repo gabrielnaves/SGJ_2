@@ -20,16 +20,28 @@ public class BoxesTouched : MonoBehaviour {
         }
     }
 
+    public int Amount() {
+        return boxList.Count;
+    }
+
     public Box FirstBox() {
-        if (boxList.Count == 0)
+        if (Amount() == 0)
             return null;
         var first = boxList[0];
         RemoveBox(0);
         return first;
     }
 
+    public Box LastBox() {
+        if (Amount() == 0)
+            return null;
+        var last = boxList[Amount()-1];
+        RemoveBox(Amount()-1);
+        return last;
+    }
+
     void LateUpdate() {
-        for (int i = 0; i < boxList.Count; ++i) {
+        for (int i = 0; i < Amount(); ++i) {
             if (boxList[i] == null)
                 RemoveBox(i--);
             else if (boxList[i].type == BoxType.GREEN) {
