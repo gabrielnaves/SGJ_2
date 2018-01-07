@@ -18,11 +18,13 @@ public class ClusterSwitch : MonoBehaviour {
         if (GameManager.instance.data.amountOnCluster == 0 &&
                 GameManager.instance.data.touchedBoxes > 0) {
             var target = BoxesTouched.instance.FirstBox();
-            cluster.AddBox(target);
-            canChange = false;
-            elapsedTime = 0;
-            target.ignorePositioning = true;
-            target.Invoke("ResetPositioningFlag", 2f);
+            if (target) {
+                cluster.AddBox(target);
+                canChange = false;
+                elapsedTime = 0;
+                target.ignorePositioning = true;
+                target.Invoke("ResetPositioningFlag", 2f);
+            }
         }
         if (canChange && BoxesTouched.instance.Amount() > 0) {
             bool changeCluster = false;

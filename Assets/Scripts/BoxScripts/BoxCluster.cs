@@ -27,8 +27,8 @@ public class BoxCluster : MonoBehaviour {
     }
 
     public Vector3 followedPosition() {
-        if (connectedBoxes.Count == 0)
-            return startingPos;
+        if (BoxCount() == 0)
+            return Camera.main.transform.position;
         Vector2 result = Vector2.zero;
         float minHeight = 999999;
         int count = 1;
@@ -47,7 +47,7 @@ public class BoxCluster : MonoBehaviour {
     }
 
     public void AddBox(Box box) {
-        if (!connectedBoxes.Contains(box)) {
+        if (!connectedBoxes.Contains(box) && box != null) {
             connectedBoxes.Add(box);
             box.transform.parent = transform;
             box.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
@@ -74,5 +74,16 @@ public class BoxCluster : MonoBehaviour {
         foreach(var box in connectedBoxes)
             result += (Vector2)box.transform.position;
         return result / (float)connectedBoxes.Count;
+    }
+
+    public int BoxCount() {
+        int result = 0;
+        for(int i = 0; i < connectedBoxes.Count; ++i) {
+            if (connectedBoxes[i] == null)
+                connectedBoxes.RemoveAt(i--);
+            else
+                result++;
+        }
+        return result;
     }
 }

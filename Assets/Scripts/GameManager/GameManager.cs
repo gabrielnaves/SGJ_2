@@ -41,7 +41,9 @@ public class GameManager : MonoBehaviour {
         levelChanger.RestartLevel();
     }
 
-    public void GoToNextLevel() {
+    public void GoToNextLevel(bool showTarget=true) {
+        if (showTarget)
+            Camera.main.GetComponent<CameraFollow>().gameEnded = true;
         levelChanger.GoToNextLevel();
     }
 }

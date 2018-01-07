@@ -13,8 +13,10 @@ public class ClusterMovement : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (!UpdateJoiningMovement())
-            UpdateHorizontalMovement();
+        if (cluster.BoxCount() > 0) {
+            if (!UpdateJoiningMovement())
+                UpdateHorizontalMovement();
+        }
     }
 
     void UpdateHorizontalMovement() {
