@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour {
     public Vector2 endLevelTarget;
     public bool gameEnded;
 
-    void Update() {
+    void FixedUpdate() {
         if (BoxCluster.instance && !gameEnded)
             FollowPlayer();
         else if (gameEnded)

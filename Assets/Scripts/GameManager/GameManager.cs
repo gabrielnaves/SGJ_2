@@ -42,8 +42,15 @@ public class GameManager : MonoBehaviour {
     }
 
     public void GoToNextLevel(bool showTarget=true) {
-        if (showTarget)
+        if (showTarget) {
             Camera.main.GetComponent<CameraFollow>().gameEnded = true;
+            Invoke("Hacks", 1f);
+        }
+        else
+            Hacks();
+    }
+
+    void Hacks() {
         levelChanger.GoToNextLevel();
     }
 }
