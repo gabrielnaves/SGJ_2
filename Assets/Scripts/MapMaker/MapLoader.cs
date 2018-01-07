@@ -23,12 +23,13 @@ public class LayerData
 
 public class MapLoader : MonoBehaviour {
 
-    public string jsonFile;
+    string jsonFile;
 
     public LayerData data { get; private set; }
     MapData rawData;
 
     void Awake() {
+        jsonFile = "level" + PlayerPrefs.GetInt("CurrentLevel");
         rawData = JsonUtility.FromJson<MapData>((Resources.Load(jsonFile) as TextAsset).text);
         data = rawData.layers[0];
     }

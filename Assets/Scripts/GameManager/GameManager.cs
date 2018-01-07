@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
+        if (!levelChanger.requestedLeave && Input.GetKeyDown(KeyCode.Escape))
+            levelChanger.GoBackToMenu();
         if (screenFader.IsIdle() && Time.timeScale == 0 && !levelChanger.requestedLeave)
             Time.timeScale = 1;
     }

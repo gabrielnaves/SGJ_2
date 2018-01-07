@@ -25,5 +25,9 @@ public class Continue : MonoBehaviour {
             enabled = false;
             GameManager.instance.GoToNextLevel();
         }
+        if (Input.GetKeyDown(KeyCode.O)) {
+            enabled = false;
+            GameManager.instance.GoToNextLevel();
+        }
     }
 }

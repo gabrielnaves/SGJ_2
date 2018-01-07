@@ -36,6 +36,11 @@ public class LevelChanger : MonoBehaviour {
         requestedLeave = true;
     }
 
+    public void GoBackToMenu() {
+        StartCoroutine(LoadMenuScene());
+        requestedLeave = true;
+    }
+
     IEnumerator LoadMenuScene() {
         screenFader.RequestFadeOut();
         Time.timeScale = 0;
