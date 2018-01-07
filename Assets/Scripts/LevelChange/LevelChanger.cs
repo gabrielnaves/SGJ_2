@@ -8,13 +8,15 @@ public class LevelChanger : MonoBehaviour {
     public string baseLevelKey = "level";
     public string menuScene = "menu";
     public string levelScene = "level";
+    public ScreenFader screenFader;
 
     public void StartGame() {
         PlayerPrefs.SetInt("CurrentLevel", 1);
-        SceneManager.LoadScene(levelScene);
+        screenFader.RequestFadeOut();
+        Invoke("RestartCurrentLevel", screenFader.fadeTime);
     }
 
-    public void RestartCurrentScene() {
+    public void RestartCurrentLevel() {
         SceneManager.LoadScene(levelScene);
     }
 
@@ -23,10 +25,15 @@ public class LevelChanger : MonoBehaviour {
         string nextJSONFile = baseLevelKey + nextLevel;
         if (Resources.Load(nextJSONFile) as TextAsset != null) {
             PlayerPrefs.SetInt("CurrentLevel", nextLevel);
-            SceneManager.LoadScene(levelScene);
+            Invoke("RestartCurrentLevel", screenFader.fadeTime);
         }
         else {
-            SceneManager.LoadScene(menuScene);
+            Invoke("LoadMenuScene", screenFader.fadeTime);
         }
+        screenFader.RequestFadeOut();
+    }
+
+    public void LoadMenuScene() {
+        SceneManager.LoadScene(menuScene);
     }
 }
