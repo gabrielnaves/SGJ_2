@@ -10,15 +10,17 @@ public class LevelChanger : MonoBehaviour {
     public string levelScene = "level";
     public ScreenFader screenFader;
 
+    public bool requestedLeave = false;
+
     public void StartGame() {
         PlayerPrefs.SetInt("CurrentLevel", 1);
         screenFader.RequestFadeOut();
-        Invoke("RestartCurrentLevel", screenFader.fadeTime);
+        StartCoroutine(LoadLevelScene());
     }
 
-    public void RestartCurrentLevel() {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(levelScene);
+    public void RestartLevel() {
+        StartCoroutine(LoadLevelScene());
+        requestedLeave = true;
     }
 
     public void GoToNextLevel() {
@@ -26,16 +28,35 @@ public class LevelChanger : MonoBehaviour {
         string nextJSONFile = baseLevelKey + nextLevel;
         if (Resources.Load(nextJSONFile) as TextAsset != null) {
             PlayerPrefs.SetInt("CurrentLevel", nextLevel);
-            Invoke("RestartCurrentLevel", screenFader.fadeTime);
+            StartCoroutine(LoadLevelScene());
         }
         else {
-            Invoke("LoadMenuScene", screenFader.fadeTime);
+            StartCoroutine(LoadMenuScene());
         }
-        screenFader.RequestFadeOut();
+        requestedLeave = true;
     }
 
-    public void LoadMenuScene() {
+    IEnumerator LoadMenuScene() {
+        screenFader.RequestFadeOut();
+        Time.timeScale = 0;
+        float elapsedTime = 0f;
+        while (elapsedTime < screenFader.fadeTime) {
+            elapsedTime += Time.unscaledDeltaTime;
+            yield return null;
+        }
         Time.timeScale = 1;
         SceneManager.LoadScene(menuScene);
+    }
+
+    IEnumerator LoadLevelScene() {
+        screenFader.RequestFadeOut();
+        Time.timeScale = 0;
+        float elapsedTime = 0f;
+        while (elapsedTime < screenFader.fadeTime) {
+            elapsedTime += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        Time.timeScale = 1;
+        SceneManager.LoadScene(levelScene);
     }
 }

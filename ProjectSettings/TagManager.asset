@@ -47,6 +47,9 @@ TagManager:
   - name: Boxes
     uniqueID: 313712935
     locked: 0
+  - name: HUD
+    uniqueID: 1547020245
+    locked: 0
   - name: ScreenFading
     uniqueID: 2889437693
     locked: 0

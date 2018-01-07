@@ -31,7 +31,15 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
-        if (screenFader.IsIdle() && Time.timeScale == 0)
+        if (screenFader.IsIdle() && Time.timeScale == 0 && !levelChanger.requestedLeave)
             Time.timeScale = 1;
+    }
+
+    public void RestartGame() {
+        levelChanger.RestartLevel();
+    }
+
+    public void GoToNextLevel() {
+        levelChanger.GoToNextLevel();
     }
 }
