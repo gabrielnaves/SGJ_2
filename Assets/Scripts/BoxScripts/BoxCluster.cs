@@ -58,7 +58,8 @@ public class BoxCluster : MonoBehaviour {
     public void RemoveBox(Box box) {
         if (connectedBoxes.Contains(box)) {
             connectedBoxes.Remove(box);
-            box.transform.parent = BoxContainer.instance ? BoxContainer.instance.transform : null;
+            if (BoxesTouched.instance)
+                BoxesTouched.instance.Add(box);
             box.inCluster = false;
         }
     }
