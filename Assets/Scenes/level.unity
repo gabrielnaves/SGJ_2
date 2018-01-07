@@ -151,8 +151,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxPrefab: {fileID: 1196985366245448, guid: c2fade771fc292748b887b6a53844581, type: 2}
+  targetContainer: {fileID: 0}
   mapLoader: {fileID: 1077346748}
-  delay: 5
+  delay: 10
 --- !u!1 &430510648
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +190,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 434837249}
-  - component: {fileID: 434837250}
   m_Layer: 0
   m_Name: Boxes
   m_TagString: Untagged
@@ -210,17 +210,6 @@ Transform:
   m_Father: {fileID: 654451406}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &434837250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 434837248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4102e4772377c749bccf49bf79030d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &654451405
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,6 +238,7 @@ Transform:
   - {fileID: 1815793571}
   - {fileID: 430510649}
   - {fileID: 434837249}
+  - {fileID: 1961661619}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -622,3 +612,43 @@ Transform:
   m_PrefabParentObject: {fileID: 4649539469616736, guid: 5c6576c925f136c48b2bf0566aa41fab,
     type: 2}
   m_PrefabInternal: {fileID: 1754932724}
+--- !u!1 &1961661618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1961661619}
+  - component: {fileID: 1961661620}
+  m_Layer: 0
+  m_Name: Boxes Touched
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1961661619
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1961661618}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 654451406}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1961661620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1961661618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4102e4772377c749bccf49bf79030d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

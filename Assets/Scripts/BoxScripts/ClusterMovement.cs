@@ -13,8 +13,8 @@ public class ClusterMovement : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        UpdateHorizontalMovement();
-        UpdateJoiningMovement();
+        if (!UpdateJoiningMovement())
+            UpdateHorizontalMovement();
     }
 
     void UpdateHorizontalMovement() {
@@ -25,7 +25,7 @@ public class ClusterMovement : MonoBehaviour {
             box.GetComponent<Rigidbody2D>().AddForce(inputForce);
     }
 
-    void UpdateJoiningMovement() {
+    bool UpdateJoiningMovement() {
         if (Input.GetKey(KeyCode.Space)) {
             var center = cluster.CenterPosition();
             Vector2 force = Vector2.zero;
@@ -34,6 +34,9 @@ public class ClusterMovement : MonoBehaviour {
                 force.x *= speed * 5;
                 box.GetComponent<Rigidbody2D>().AddForce(force);
             }
+            return true;
         }
+        else
+            return false;
     }
 }

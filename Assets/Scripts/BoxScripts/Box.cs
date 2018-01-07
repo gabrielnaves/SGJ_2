@@ -35,9 +35,15 @@ public class Box : MonoBehaviour {
                 if (otherBox.type == BoxType.BLUE)
                     BoxCluster.instance.AddBox(otherBox);
             }
-            else if (type == BoxType.RED && otherBox.type == BoxType.BLUE) {
+            if (type == BoxType.RED && otherBox.type == BoxType.BLUE) {
                 Destroy(otherBox.gameObject);
                 Destroy(gameObject);
+            }
+            if (type == BoxType.BLUE && otherBox.type == BoxType.GREEN) {
+                if (inCluster)
+                    BoxCluster.instance.RemoveBox(this);
+                UpdateType(otherBox.type);
+                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             }
         }
     }
@@ -54,10 +60,26 @@ public class Box : MonoBehaviour {
         type = newType;
     }
 
+    bool requestedExit;
     void LateUpdate() {
         if (inCluster) {
-            if ((transform.position - Camera.main.transform.position).magnitude > 15f)
-                BoxCluster.instance.RemoveBox(this);
+            float distance = (transform.position - Camera.main.transform.position).magnitude;
+            if (distance > 15f && !requestedExit) {
+                requestedExit = true;
+                Invoke("ExitCluster", 5f);
+            }
+            else if (distance < 15f && requestedExit) {
+                requestedExit = false;
+                CancelInvoke("ExitCluster");
+            }
+            if (distance > 18f) {
+                CancelInvoke();
+                ExitCluster();
+            }
         }
+    }
+
+    void ExitCluster() {
+        BoxCluster.instance.RemoveBox(this);
     }
 }
